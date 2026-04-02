@@ -2,6 +2,11 @@
 
 Projeto desenvolvido em Python com foco em lógica de programação, estruturas condicionais, laços de repetição e interação via terminal.
 
+## 💻 Preview
+
+![Preview](exemplos/img1.png)
+![Preview](exemplos/img2.png)
+
 ## 🚀 Funcionalidades
 - ➕ Soma
 - ➖ Subtração
