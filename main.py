@@ -1,65 +1,57 @@
-#Calculadora simples com while
-controle = 1
+from math import factorial
 
-print("------------------------------", end="\n")
-while True:
-    print("Mini Calculadora")
-    print("1-Somar dois números")
-    print("2-Subtrair dois números")
-    print("3-Multiplicar dois números")
-    print("4-Dividir dois números")
-    print("5-Fatorial de um número")
-    print("6-Potência entre dois números")
-    print("7-Sair\n")
-    controle = int(input("Escolha uma opção: "))
-    if (controle == 7):
-        break
-    print("------------------------------", end="\n")
-    
-    #opções
-    if controle == 1:
-        num1 = float(input("Digite o 1° número: "))
-        num2 = float(input("Digite o 2° número: "))
-        print(f"\aA soma de {num1} e {num2} é {num1 + num2}")
-        print("------------------------------", end="\n")
-    
-    elif controle == 2:
-        num1 = float(input("Digite o 1° número: "))
-        num2 = float(input("Digite o 2° número: "))
-        print(f"\aA subtração de {num1} e {num2} é {num1 - num2}")
-        print("------------------------------", end="\n")
-    
-    elif controle == 3:
-        num1 = float(input("Digite o 1° número: "))
-        num2 = float(input("Digite o 2° número: "))
-        print(f"\aA multiplicação de {num1} e {num2} é {num1 * num2}")
-        print("------------------------------", end="\n")
-    
-    elif controle == 4:
-        num1 = float(input("Digite o 1° número: "))
-        num2 = float(input("Digite o 2° número: "))
-        if num2 == 0:
-            print("Não é possível fazer a divisão por zero")
-            print("------------------------------", end="\n")
-        else:
-            print(f"\aA divisão de {num1} e {num2} é {num1 / num2}")
-            print("------------------------------", end="\n")
-    
-    elif controle == 5:
-        num1 = float(input("Digite um número: "))
-        fatorial = 1
-        contador = num1
-        while contador>1:
-            fatorial *= contador
-            contador-=1
-        print(f"\aO fatorial de {num1} é {fatorial}")
-        print("------------------------------", end="\n")
-                
-    elif controle == 6:
-        num1 = float(input("Digite o número base: "))
-        num2 = float(input("Digite o número a elevar: "))
-        print(f"\n {num1} elevado a {num2} é {num1 ** num2}")
-        print("------------------------------", end="\n")
 
-print("------------------------------", end="\n")        
-print("Fim da Calculadora")
+def main():
+    while True:
+        print("------------------------------")
+        print("Mini Calculadora")
+        print("1-Somar dois números")
+        print("2-Subtrair dois números")
+        print("3-Multiplicar dois números")
+        print("4-Dividir dois números")
+        print("5-Fatorial de um número")
+        print("6-Potência entre dois números")
+        print("7-Sair\n")
+
+        opcao = input("Escolha uma opção: ").strip()
+        if opcao == "7":
+            break
+        if opcao not in {"1", "2", "3", "4", "5", "6"}:
+            print("Opção inválida. Escolha um número de 1 a 7.")
+            continue
+
+        try:
+            if opcao == "5":
+                numero = int(input("Digite um inteiro não negativo: "))
+                print(f"O fatorial de {numero} é {factorial(numero)}")
+                continue
+
+            primeiro = float(input("Digite o 1° número: "))
+            segundo = float(input("Digite o 2° número: "))
+
+            if opcao == "1":
+                print(f"A soma de {primeiro} e {segundo} é {primeiro + segundo}")
+            elif opcao == "2":
+                print(f"A subtração de {primeiro} e {segundo} é {primeiro - segundo}")
+            elif opcao == "3":
+                print(f"A multiplicação de {primeiro} e {segundo} é {primeiro * segundo}")
+            elif opcao == "4":
+                print(f"A divisão de {primeiro} e {segundo} é {primeiro / segundo}")
+            elif opcao == "6":
+                print(f"{primeiro} elevado a {segundo} é {primeiro ** segundo}")
+        except ValueError:
+            if opcao == "5":
+                print("Use um inteiro não negativo dentro do limite de exibição do Python.")
+            else:
+                print("Número inválido. Use ponto para valores decimais.")
+        except ZeroDivisionError:
+            print("Não é possível fazer uma divisão por zero.")
+        except OverflowError:
+            print("O resultado é grande demais para esta operação.")
+
+    print("------------------------------")
+    print("Fim da Calculadora")
+
+
+if __name__ == "__main__":
+    main()
